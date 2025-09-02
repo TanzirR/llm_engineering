@@ -33,15 +33,12 @@ print(message.content[0].text)
 ```
 
 ```py
-# Google released endpoints that means you can use Gemini via the client libraries for OpenAI
-gemini_via_openai_client = OpenAI(
-    api_key=google_api_key,
-    base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
+google.generativeai.configure()
+gemini = google.generativeai.GenerativeModel(
+    model_name='gemini-2.0-flash',
+    system_instruction="system_prompt"
 )
+response = gemini.generate_content("user_prompt")
+print(response.text)
 
-response = gemini_via_openai_client.chat.completions.create(
-    model="gemini-2.5-flash",
-    messages=prompts
-)
-print(response.choices[0].message.content)
 ```
