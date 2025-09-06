@@ -33,7 +33,7 @@ print(message.content[0].text)
 ```
 
 ```py
-google.generativeai.configure()
+google.generativeai.configure(api_key=google_api_key)
 gemini = google.generativeai.GenerativeModel(
     model_name='gemini-2.0-flash',
     system_instruction="system_prompt"
